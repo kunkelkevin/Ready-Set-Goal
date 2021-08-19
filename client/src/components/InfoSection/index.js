@@ -12,10 +12,24 @@ import {
   Subtitle,
   BtnWrap,
   ImgWrap,
-  Img
+  Img,
 } from "./InfoElements";
 
-const InfoSection = ({lightBg, id, imgStart, topLine, lightText, darkText, description, buttonLabel, img, alt, headLine }) => {
+import Img1 from '../../images/image-1.svg';
+
+const InfoSection = ({
+  lightBg,
+  id,
+  imgStart,
+  topLine,
+  lightText,
+  darkText,
+  description,
+  buttonLabel,
+  img,
+  alt,
+  headLine,
+}) => {
   return (
     <>
       <InfoContainer lightBg={lightBg} id={id}>
@@ -27,13 +41,13 @@ const InfoSection = ({lightBg, id, imgStart, topLine, lightText, darkText, descr
                 <Heading lightt={lightText}>{headLine}</Heading>
                 <Subtitle darkText={darkText}>{description}</Subtitle>
                 <BtnWrap>
-                  <Button to='home' >{buttonLabel}</Button>
+                  <Button to="home">{buttonLabel}</Button>
                 </BtnWrap>
               </TextWrapper>
             </Column1>
             <Column2>
               <ImgWrap>
-                <Img src={img} alt={alt}/>
+                <Img src={Img1} alt={alt} />
               </ImgWrap>
             </Column2>
           </InfoRow>
