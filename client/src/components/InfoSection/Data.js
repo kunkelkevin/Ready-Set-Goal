@@ -9,9 +9,45 @@ export const homeObjOne = {
     description: ' "Set!" the time, date, and location and "SCORE!" a new group of friends to play Futbol with!',
     buttonLabel: 'Learn More',
     imgStart: false,
-    img: require('../../images/image-1.svg'),
+    img: require('../../images/image-1.svg').default,
     alt: 'Soccer Ball',
     dark: true,
     primary: true,
     darkText: false
-}
+};
+
+export const homeObjTwo = {
+    id: 'about',
+    lightBg: true,
+    lightText: false,
+    lightTextDesc: false,
+    darkText:true,
+    topLine: 'You are in control',
+    headLine: 'Are you "READY!" to find games at ease?',
+    description: ' "Set!" the time, date, and location and "SCORE!" a new group of friends to play Futbol with!',
+    buttonLabel: 'Learn More',
+    imgStart: false,
+    img: require('../../images/image-1.svg').default,
+    alt: 'Soccer Ball',
+    dark: true,
+    primary: true,
+    darkText: false
+};
+
+export const homeObjThree = {
+    id: 'about',
+    lightBg: true,
+    lightText: false,
+    lightTextDesc: false,
+    darkText:true,
+    topLine: 'You are in control',
+    headLine: 'Are you "READY!" to find games at ease?',
+    description: ' "Set!" the time, date, and location and "SCORE!" a new group of friends to play Futbol with!',
+    buttonLabel: 'Learn More',
+    imgStart: false,
+    img: require('../../images/image-1.svg').default,
+    alt: 'Soccer Ball',
+    dark: true,
+    primary: true,
+    darkText: false
+};
