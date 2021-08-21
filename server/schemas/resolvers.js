@@ -2,105 +2,108 @@ const { AuthenticationError } = require("apollo-server-express");
 const { Player, Field, Game } = require("../models");
 const { signToken } = require("../utils/auth");
 
-const resolvers = {  
-    Query: {
+const resolvers = {
+  Query: {
+    me: async (parent, args, context) => {
+      if (context.player) {
+        const playerData = await Player.findOne({
+          _id: context.player._id,
+        }).select("-__v -password");
+        return playerData;
+      }
+
+      throw new AuthenticationError("Not logged in");
+    },
     games: async () => {
       return await Game.find();
     },
-    products: async (parent, { category, name }) => {
-      const params = {};
-
-      if (category) {
-        params.category = category;
-      }
-
-      if (name) {
-        params.name = {
-          $regex: name
-        };
-      }
-
-      return await Product.find(params).populate('category');
+    fields: async () => {
+      return await Field.find();
     },
-    product: async (parent, { _id }) => {
-      return await Product.findById(_id).populate('category');
+    field: async (parent, { _id }) => {
+      return await Field.findById(_id);
     },
-    user: async (parent, args, context) => {
-      if (context.user) {
-        const user = await User.findById(context.user._id).populate({
-          path: 'orders.products',
-          populate: 'category'
-        });
-
-        user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
-
-        return user;
-      }
-
-      throw new AuthenticationError('Not logged in');
-    },
-    singleGame: async (parent, { _id }, context) => {
+    player: async (parent, args, context) => {
       if (context.player) {
-        const game = await Games.findById(game._id).populate({
-          path: 'games',
-          populate: 'players'
-        });
+        const player = await Player.findById(context.player._id);
 
-        return user.orders.id(_id);
+        //user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
+
+        return player;
       }
 
-      throw new AuthenticationError('Not logged in');
+      throw new AuthenticationError("Not logged in");
     },
-    },
+    // singleGame: async (parent, { _id }, context) => {
+    //   if (context.player) {
+    //     const game = await Games.findById(game._id).populate({
+    //       path: 'games',
+    //       populate: 'players'
+    //     });
+
+    //     return user.orders.id(_id);
+    //   }
+
+    //   throw new AuthenticationError('Not logged in');
+    // },
+  },
   Mutation: {
     addPlayer: async (parent, args) => {
       const player = await Player.create(args);
       const token = signToken(player);
 
-      return { token, user };
+      return { token, player };
     },
-    addGame: async (parent, { products }, context) => {
-      console.log(context);
+    // addGame: async (parent, args, context) => {
+    //   console.log(context);
+    //   if (context.player) {
+    //     const game = await Game.create(args);
+
+    //     await Player.findByIdAndUpdate(context.player._id, {
+    //       $push: { games: game },
+    //     });
+
+    //     return game;
+    //   }
+
+    //   throw new AuthenticationError("Not logged in");
+    // },
+    removeGame: async (parent, { _id }, context) => {
       if (context.player) {
-        const game = new Game({ products });
-
-        // await Player.findByIdAndUpdate(context.player._id, { $push: { game: game } });
-
+        const game = await Game.destroy(_id);
         return game;
       }
-
-      throw new AuthenticationError('Not logged in');
     },
     updatePlayer: async (parent, args, context) => {
       if (context.player) {
-        return await Player.findByIdAndUpdate(context.player._id, args, { new: true });
+        return await Player.findByIdAndUpdate(context.player._id, args, {
+          new: true,
+        });
       }
 
-      throw new AuthenticationError('Not logged in');
+      throw new AuthenticationError("Not logged in");
     },
-    updateGame: async (parent, { _id, quantity }) => {
-      const decrement = Math.abs(quantity) * -1;
-
-      return await Game.findByIdAndUpdate(_id, { $inc: { quantity: decrement } }, { new: true });
+    updateGame: async (parent, { _id, time }) => {
+      return await Game.findByIdAndUpdate(_id, { time: time }, { new: true });
     },
     login: async (parent, { email, password }) => {
       const player = await Player.findOne({ email });
 
       if (!player) {
-        throw new AuthenticationError('Incorrect credentials');
+        throw new AuthenticationError("Incorrect credentials");
       }
 
-      const correctPw = await user.isCorrectPassword(password);
+      const correctPw = await player.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw new AuthenticationError('Incorrect credentials');
+        throw new AuthenticationError("Incorrect credentials");
       }
 
-      const token = signToken(user);
+      const token = signToken(player);
 
-      return { token, user };
-    }
-}
-    };
+      return { token, player };
+    },
+  },
+};
 
-  module.exports = resolvers;
+module.exports = resolvers;
