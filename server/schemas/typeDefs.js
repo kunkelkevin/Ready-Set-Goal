@@ -1,58 +1,54 @@
 const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
-  type Category {
+  type Field {
     _id: ID
-    name: String
+    fieldType: String
+    lat: Float
+    lng: Float
   }
 
-  type Product {
+  type Game {
     _id: ID
-    name: String
-    description: String
-    image: String
-    quantity: Int
-    price: Float
-    category: Category
+    time: String
+    players: [Player]
+    field: Field
   }
 
-  type Order {
+  type Player {
     _id: ID
-    purchaseDate: String
-    products: [Product]
-  }
-
-  type User {
-    _id: ID
-    firstName: String
-    lastName: String
+    playerName: String
     email: String
-    orders: [Order]
-  }
-
-  type Checkout {
-    session: ID
+    password: String
+    createdAt: String
+    experience: String
+    games: [Game]
   }
 
   type Auth {
     token: ID
-    user: User
+    user: Player
   }
 
   type Query {
-    categories: [Category]
-    products(category: ID, name: String): [Product]
-    product(_id: ID!): Product
-    user: User
-    order(_id: ID!): Order
-    checkout(products: [ID]!): Checkout
+    me: Player
+    fields: [Field]
+    field(_id: ID!): Field
+    player: Player
+    games: [Game]
   }
 
   type Mutation {
-    addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
-    addOrder(products: [ID]!): Order
-    updateUser(firstName: String, lastName: String, email: String, password: String): User
-    updateProduct(_id: ID!, quantity: Int!): Product
+    addPlayer(playerName: String!, email: String!, password: String!): Auth
+    # addGame(time: String!, field: Field!): Game
+    removeGame(_id: ID!): Game
+    updateGame(_id: ID!, time: String): Game
+    updatePlayer(
+      firstName: String
+      lastName: String
+      email: String
+      password: String
+    ): Player
     login(email: String!, password: String!): Auth
   }
 `;
