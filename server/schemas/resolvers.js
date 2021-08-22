@@ -37,14 +37,14 @@ const resolvers = {
     // singleGame: async (parent, { _id }, context) => {
     //   if (context.player) {
     //     const game = await Games.findById(game._id).populate({
-    //       path: 'games',
-    //       populate: 'players'
+    //       path: "games",
+    //       populate: "players",
     //     });
 
     //     return user.orders.id(_id);
     //   }
 
-    //   throw new AuthenticationError('Not logged in');
+    //   throw new AuthenticationError("Not logged in");
     // },
   },
   Mutation: {
@@ -53,6 +53,10 @@ const resolvers = {
       const token = signToken(player);
 
       return { token, player };
+    },
+    addField: async (parent, args) => {
+      const field = await Field.create(args);
+      return field;
     },
     // addGame: async (parent, args, context) => {
     //   console.log(context);

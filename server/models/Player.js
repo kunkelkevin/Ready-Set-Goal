@@ -24,18 +24,18 @@ const playerSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-    get: (createdAtVal) => dateFormat(createdAtVal),
-  },
+  //   createdAt: {
+  //     type: Date,
+  //     default: Date.now,
+  //     get: (createdAtVal) => dateFormat(createdAtVal),
+  //   },
   experience: {
     type: String,
     required: true,
     enum: ["Beginner", "Have played some", "Competitive"],
     default: "Have played some",
   },
-  games: [Game.schema],
+  //   games: [Game.schema],
 });
 
 // set up pre-save middleware to create password
