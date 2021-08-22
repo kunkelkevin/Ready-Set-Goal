@@ -13,6 +13,7 @@ export const homeObjOne = {
     alt: 'Soccer Ball',
     dark: false,
     primary: false,
+    to: 'set',
 };
 
 export const homeObjTwo = {
@@ -30,6 +31,7 @@ export const homeObjTwo = {
     alt: 'Soccer Ball dribbling',
     dark: true,
     primary: true,
+    to: 'goal'
 };
 
 export const homeObjThree = {
@@ -47,4 +49,5 @@ export const homeObjThree = {
     alt: 'friends on the couch',
     dark: true,
     primary: true,
+    to: 'score',
 };

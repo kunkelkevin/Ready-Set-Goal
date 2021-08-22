@@ -27,6 +27,7 @@ justify-content: center;
 export const FooterLinksWrapper = styled.div`
 display: flex;
 
+
 @media screen and (max-width: 820px) {
     flex-direction: column;
 }
@@ -37,7 +38,7 @@ display: flex;
 flex-direction: column;
 align-items: flex-start;
 margin: 16px;
-text-align: left;
+text-align: center;
 width: 160px;
 box-sizing: border-box;
 color: #fff;
