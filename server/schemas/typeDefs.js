@@ -8,13 +8,6 @@ const typeDefs = gql`
     lng: Float
   }
 
-  type Game {
-    _id: ID
-    time: String
-    players: [Player]
-    field: Field
-  }
-
   type Player {
     _id: ID
     playerName: String
@@ -22,7 +15,14 @@ const typeDefs = gql`
     password: String
     createdAt: String
     experience: String
-    games: [Game]
+    # games: [Game]
+  }
+
+  type Game {
+    _id: ID
+    time: String
+    players: [Player]
+    field: Field
   }
 
   type Auth {
@@ -40,6 +40,7 @@ const typeDefs = gql`
 
   type Mutation {
     addPlayer(playerName: String!, email: String!, password: String!): Auth
+    addField(fieldType: String!, lat: Float!, lng: Float!): Field
     # addGame(time: String!, field: Field!): Game
     removeGame(_id: ID!): Game
     updateGame(_id: ID!, time: String): Game
