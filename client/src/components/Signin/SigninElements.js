@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
 min-height: 765px;
-position: absolute;
-/* bottom: 0; */
+position: fixed;
+bottom: 0;
 left: 0;
 right: 0;
-/* top: 0; */
+top: 0;
 z-index: 0;
 overflow: hidden;
 background: linear-gradient(
@@ -118,9 +118,10 @@ font-size: 20px;
 cursor: pointer;
 `;
 
-export const Text = styled.span`
+export const SignUp = styled(Link)`
 text-align: center;
 margin-top: 24px;
 color: #fff;
 font-size: 14px;
+text-decoration: none;
 `;
