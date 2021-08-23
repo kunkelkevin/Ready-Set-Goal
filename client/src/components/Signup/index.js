@@ -28,12 +28,14 @@ const SignUp = () => {
     console.log(formState);
     const mutationResponse = await addPlayer({
       variables: {
+        playerName: formState.playerName,
         email: formState.email,
         password: formState.password,
-        playerName: formState.playerName,
       },
     });
+    console.log("here");
     const token = mutationResponse.data.addPlayer.token;
+    console.log(token);
     Auth.login(token);
   };
 

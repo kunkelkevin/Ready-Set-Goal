@@ -1,6 +1,7 @@
 const { AuthenticationError } = require("apollo-server-express");
 const { Player, Field, Game } = require("../models");
 const { signToken } = require("../utils/auth");
+const stripe = require("stripe")("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
 
 const resolvers = {
   Query: {
@@ -51,7 +52,7 @@ const resolvers = {
     addPlayer: async (parent, args) => {
       const player = await Player.create(args);
       const token = signToken(player);
-
+      console.log(token, player);
       return { token, player };
     },
     addField: async (parent, args) => {
@@ -90,6 +91,7 @@ const resolvers = {
     updateGame: async (parent, { _id, time }) => {
       return await Game.findByIdAndUpdate(_id, { time: time }, { new: true });
     },
+
     login: async (parent, { email, password }) => {
       const player = await Player.findOne({ email });
 

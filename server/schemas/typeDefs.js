@@ -7,7 +7,6 @@ const typeDefs = gql`
     lat: Float
     lng: Float
   }
-
   type Player {
     _id: ID
     playerName: String
@@ -17,7 +16,6 @@ const typeDefs = gql`
     experience: String
     # games: [Game]
   }
-
   type Game {
     _id: ID
     time: String

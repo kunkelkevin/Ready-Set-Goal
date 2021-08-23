@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 const bcrypt = require("bcrypt");
-const Game = require("./Game");
+// const Game = require("./Game");
 
 const playerSchema = new Schema({
   playerName: {
