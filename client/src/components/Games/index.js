@@ -1,5 +1,5 @@
 import React from 'react';
-import gameList from '../PhotoList';
+import gameList from '../GameList';
 import { capitalizeFirstLetter } from '../../utils/helpers';
 
 function gameList(props) {
