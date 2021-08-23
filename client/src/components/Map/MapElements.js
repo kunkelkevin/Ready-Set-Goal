@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const InfoContainer = styled.div`
+export const MapContainer = styled.div`
 color: #fff;
 background: ${({ lightBg }) => (lightBg ? '#f9f9f9' : '#010606')};
 
@@ -9,7 +9,7 @@ background: ${({ lightBg }) => (lightBg ? '#f9f9f9' : '#010606')};
 }
 `;
 
-export const InfoWrapper = styled.div`
+export const MapWrapper = styled.div`
 display: grid;
 z-index: 1;
 height: 860px;
@@ -21,7 +21,7 @@ padding: 0 24px;
 justify-content: center;
 `;
 
-export const InfoRow = styled.div`
+export const MapRow = styled.div`
 display: grid;
 grid-auto-columns: minmax(auto, 1fr);
 align-items: center;
@@ -78,7 +78,7 @@ max-width: 440px;
 margin-bottom: 35px;
 font-size: 18px;
 line-height: 24px;
-color: ${({ darkText }) => (darkText ? '#000000' : '#fff')};
+color: ${({ darkText }) => (darkText ? '#010606' : '#000')};
 `;
 
 export const BtnWrap = styled.div`
@@ -97,4 +97,3 @@ height: auto;
 margin: 0 0 10px 0;
 padding-right: 0;
 `;
-
