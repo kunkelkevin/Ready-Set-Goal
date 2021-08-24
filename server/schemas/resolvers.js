@@ -16,7 +16,17 @@ const resolvers = {
       throw new AuthenticationError("Not logged in");
     },
     games: async () => {
-      return await Game.find();
+      return await Game.find().populate("players").populate("field");
+    },
+    gamesByPlayerId: async (parent, { _id }) => {
+      return await Game.find({ players: _id })
+        .populate("field")
+        .populate("players");
+    },
+    gamesByFieldId: async (parent, { _id }) => {
+      return await Game.find({ field: _id })
+        .populate("field")
+        .populate("players");
     },
     fields: async () => {
       return await Field.find();
@@ -24,16 +34,17 @@ const resolvers = {
     field: async (parent, { _id }) => {
       return await Field.findById(_id);
     },
-    player: async (parent, args, context) => {
-      if (context.player) {
-        const player = await Player.findById(context.player._id);
+    players: async (parent, args, context) => {
+      return await Player.find();
+      // if (context.player) {
+      //   const player = await Player.findById(context.player._id);
 
-        //user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
+      //   //user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
 
-        return player;
-      }
+      //   return player;
+      // }
 
-      throw new AuthenticationError("Not logged in");
+      // throw new AuthenticationError("Not logged in");
     },
     // singleGame: async (parent, { _id }, context) => {
     //   if (context.player) {
@@ -59,20 +70,20 @@ const resolvers = {
       const field = await Field.create(args);
       return field;
     },
-    // addGame: async (parent, args, context) => {
-    //   console.log(context);
-    //   if (context.player) {
-    //     const game = await Game.create(args);
+    addGame: async (parent, args, context) => {
+      console.log(context);
+      // if (context.player) {
+      const game = await Game.create(args);
 
-    //     await Player.findByIdAndUpdate(context.player._id, {
-    //       $push: { games: game },
-    //     });
+      // await Player.findByIdAndUpdate("6122cc5e522db42bd4e0db58", {
+      //   $push: { games: game },
+      // });
 
-    //     return game;
-    //   }
+      return game;
+      // }
 
-    //   throw new AuthenticationError("Not logged in");
-    // },
+      // throw new AuthenticationError("Not logged in");
+    },
     removeGame: async (parent, { _id }, context) => {
       if (context.player) {
         const game = await Game.destroy(_id);
@@ -88,10 +99,20 @@ const resolvers = {
 
       throw new AuthenticationError("Not logged in");
     },
-    updateGame: async (parent, { _id, time }) => {
-      return await Game.findByIdAndUpdate(_id, { time: time }, { new: true });
+    addPlayerToGame: async (parent, { _id, player }) => {
+      return await Game.findByIdAndUpdate(
+        _id,
+        { $addToSet: { players: player } },
+        { new: true }
+      );
     },
-
+    removePlayerFromGame: async (parent, { _id, player }) => {
+      return await Game.findByIdAndUpdate(
+        _id,
+        { $pull: { players: player } },
+        { new: true }
+      );
+    },
     login: async (parent, { email, password }) => {
       const player = await Player.findOne({ email });
 

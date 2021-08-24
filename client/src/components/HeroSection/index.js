@@ -37,7 +37,7 @@ const HeroSection = () => {
             exact="true"
             offset={-80}
             onMouseEnter={onHover}
-            onmouseleave={onHover}
+            onMouseLeave={onHover}
           >
             Pick Up! {hover ? <Arrowforward /> : <ArrowRight />}
           </Button>

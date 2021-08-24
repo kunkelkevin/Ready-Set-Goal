@@ -24,6 +24,7 @@ const typeDefs = gql`
     description: String
     players: [Player]
     field: Field
+    playerCount: Int
   }
 
   type Auth {
@@ -35,8 +36,10 @@ const typeDefs = gql`
     me: Player
     fields: [Field]
     field(_id: ID!): Field
-    player: Player
+    players: [Player]
     games: [Game]
+    gamesByPlayerId(_id: ID!): [Game]
+    gamesByFieldId(_id: ID!): [Game]
   }
 
   type Mutation {
@@ -46,10 +49,11 @@ const typeDefs = gql`
       time: String!
       description: String
       field: ID!
-      player: [ID!]!
+      players: [ID!]!
     ): Game
     removeGame(_id: ID!): Game
-    updateGame(_id: ID!, time: String): Game
+    addPlayerToGame(_id: ID!, player: ID): Game
+    removePlayerFromGame(_id: ID!, player: ID): Game
     updatePlayer(
       firstName: String
       lastName: String

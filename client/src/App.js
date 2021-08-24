@@ -1,24 +1,25 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { ApolloProvider } from '@apollo/react-hooks';
-import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from "@apollo/react-hooks";
+import ApolloClient from "apollo-boost";
 
 import Home from "./pages";
 import SigninPage from "./pages/Signin";
-import SignupPage from "./pages/Signup";
+import SignupPage from "./pages/signup";
+import LoggedInPage from "./pages/LoggedIn";
 import { StoreProvider } from "./utils/GlobalState";
 
 const client = new ApolloClient({
   request: (operation) => {
-    const token = localStorage.getItem('id_token')
+    const token = localStorage.getItem("id_token");
     operation.setContext({
       headers: {
-        authorization: token ? `Bearer ${token}` : ''
-      }
-    })
+        authorization: token ? `Bearer ${token}` : "",
+      },
+    });
   },
-  uri: '/graphql',
-})
+  uri: "/graphql",
+});
 
 function App() {
   return (
@@ -30,12 +31,12 @@ function App() {
               <Route path="/" component={Home} exact />
               <Route path="/signin" component={SigninPage} exact />
               <Route path="/signup" component={SignupPage} exact />
+              <Route path="/loggedin" component={LoggedInPage} exact />
             </Switch>
           </StoreProvider>
         </div>
       </Router>
     </ApolloProvider>
-
   );
 }
 
