@@ -9,6 +9,9 @@ const gameSchema = new Schema({
     type: Date,
     required: true,
   },
+  description: {
+    type: String,
+  },
   players: [
     {
       type: Schema.Types.ObjectId,
@@ -22,7 +25,7 @@ const gameSchema = new Schema({
 });
 
 gameSchema.virtual("playerCount").get(function () {
-  return this.players.reduce((total, player) => total + player.length + 1, 0);
+  return this.players.length;
 });
 
 const Game = mongoose.model("Game", gameSchema);

@@ -1,5 +1,5 @@
-import React from 'react';
-import mapImage from '../../src/images/dummymap.jpg';
+import React from "react";
+import mapImage from "../../images/dummymap.jpg";
 import {
   MapContainer,
   MapWrapper,
@@ -19,11 +19,14 @@ function gameMap() {
   return (
     <section className="my-5">
       <h1 id="about">Game Map</h1>
-      <img src={mapImage} className="my-2" style={{ width: "100%" }} alt="cover" />
+      <img
+        src={mapImage}
+        className="my-2"
+        style={{ width: "100%" }}
+        alt="cover"
+      />
       <div className="my-2">
-        <p>
-          Click on the map and find a game!
-        </p>
+        <p>Click on the map and find a game!</p>
       </div>
     </section>
   );
