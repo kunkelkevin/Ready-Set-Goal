@@ -5,7 +5,7 @@ import ApolloClient from "apollo-boost";
 
 import Home from "./pages";
 import SigninPage from "./pages/Signin";
-import SignupPage from "./pages/signup";
+import SignupPage from "./pages/Signup";
 import LoggedInPage from "./pages/LoggedIn";
 import { StoreProvider } from "./utils/GlobalState";
 
