@@ -91,11 +91,11 @@ const resolvers = {
       }
     },
     updatePlayer: async (parent, args, context) => {
-      if (context.player) {
-        return await Player.findByIdAndUpdate(context.player._id, args, {
-          new: true,
-        });
-      }
+      // if (context.player) {
+      return await Player.findByIdAndUpdate(context.player._id, args, {
+        new: true,
+      });
+      // }
 
       throw new AuthenticationError("Not logged in");
     },
