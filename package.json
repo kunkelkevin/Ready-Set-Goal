@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/kunkelkevin/Ready-Set-Goal#readme",
   "dependencies": {
+    "@react-google-maps/api": "^2.2.0",
     "concurrently": "^6.2.1",
     "if-env": "^1.0.4",
     "mongodb": "^4.1.0",

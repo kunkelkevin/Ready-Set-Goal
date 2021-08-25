@@ -7,11 +7,12 @@ import FooterLI from "../components/FooterLI";
 const LoggedInPage = () => {
   return (
     <>
-      <Map />
       <NavbarLI />
-      {/* <Map /> */}
+      <Map />
       <GalleryLI />
       <FooterLI />
     </>
   );
 };
+
+export default LoggedInPage;
