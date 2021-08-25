@@ -3,18 +3,11 @@ const { gql } = require("apollo-server-express");
 const typeDefs = gql`
   type Field {
     _id: ID
+    name: String
     fieldType: String
     lat: Float
     lng: Float
   }
-
-  type Game {
-    _id: ID
-    time: String
-    players: [Player]
-    field: Field
-  }
-
   type Player {
     _id: ID
     playerName: String
@@ -22,32 +15,48 @@ const typeDefs = gql`
     password: String
     createdAt: String
     experience: String
-    games: [Game]
+  }
+  type Game {
+    _id: ID
+    time: String
+    description: String
+    players: [Player]
+    field: Field
+    playerCount: Int
   }
 
   type Auth {
     token: ID
-    user: Player
+    player: Player
   }
 
   type Query {
     me: Player
     fields: [Field]
     field(_id: ID!): Field
-    player: Player
+    players: [Player]
     games: [Game]
+    gamesByPlayerId(_id: ID!): [Game]
+    gamesByFieldId(_id: ID!): [Game]
   }
 
   type Mutation {
     addPlayer(playerName: String!, email: String!, password: String!): Auth
-    # addGame(time: String!, field: Field!): Game
+    addField(name: String!, fieldType: String!, lat: Float!, lng: Float!): Field
+    addGame(
+      time: String!
+      description: String
+      field: ID!
+      players: [ID!]!
+    ): Game
     removeGame(_id: ID!): Game
-    updateGame(_id: ID!, time: String): Game
+    addPlayerToGame(_id: ID!, player: ID): Game
+    removePlayerFromGame(_id: ID!, player: ID): Game
     updatePlayer(
-      firstName: String
-      lastName: String
+      playerName: String
       email: String
       password: String
+      experience: String
     ): Player
     login(email: String!, password: String!): Auth
   }

@@ -27,11 +27,18 @@ const HeroSection = () => {
       </HeroBg>
       <HeroContent>
         <HeroH1>READY! SET! GOAL!</HeroH1>
-        <HeroP>
-          score that perfect pickup game
-        </HeroP>
+        <HeroP>score that perfect pickup game</HeroP>
         <HeroBtnWrapper>
-          <Button to="signup" onMouseEnter={onHover} onmouseleave={onHover}>
+          <Button
+            to="ready"
+            smooth={true}
+            duration={500}
+            spy={true}
+            exact="true"
+            offset={-80}
+            onMouseEnter={onHover}
+            onMouseLeave={onHover}
+          >
             Pick Up! {hover ? <Arrowforward /> : <ArrowRight />}
           </Button>
         </HeroBtnWrapper>

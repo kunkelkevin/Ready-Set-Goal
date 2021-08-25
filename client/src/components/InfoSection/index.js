@@ -15,7 +15,7 @@ import {
   Img,
 } from "./InfoElements";
 
-import Img1 from '../../images/image-1.svg';
+import Img1 from "../../images/image-1.svg";
 
 const InfoSection = ({
   lightBg,
@@ -26,12 +26,13 @@ const InfoSection = ({
   darkText,
   description,
   buttonLabel,
-  img,
+  IMG,
   alt,
   headLine,
   primary,
   dark,
   dark2,
+  to,
 }) => {
   return (
     <>
@@ -44,22 +45,25 @@ const InfoSection = ({
                 <Heading lightText={lightText}>{headLine}</Heading>
                 <Subtitle darkText={darkText}>{description}</Subtitle>
                 <BtnWrap>
-                  <Button to="home"
-                  smooth={true}
-                  duration={500}
-                  spy={true}
-                  exact={true}
-                  offset={-80}
-                  primary={primary ? 1 : 0}
-                  dark={dark ? 1 : 0}
-                  dark2={dark2 ? 1 :0}
-                  >{buttonLabel}</Button>
+                  <Button
+                    to={to}
+                    smooth={true}
+                    duration={500}
+                    spy={true}
+                    exact={"true"}
+                    offset={-80}
+                    primary={primary ? 1 : 0}
+                    dark={dark ? 1 : 0}
+                    dark2={dark2 ? 1 : 0}
+                  >
+                    {buttonLabel}
+                  </Button>
                 </BtnWrap>
               </TextWrapper>
             </Column1>
             <Column2>
               <ImgWrap>
-                <Img src={img} alt={alt} />
+                <Img src={IMG} alt={alt} />
               </ImgWrap>
             </Column2>
           </InfoRow>
