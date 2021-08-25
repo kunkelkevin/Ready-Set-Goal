@@ -37,3 +37,15 @@ export const UPDATE_PLAYER = gql`
     }
   }
 `;
+
+export const CREATE_CARD = gql`
+  mutation createCard(
+    $fieldName: String!
+    $calendar: String!
+    $time: String!
+    $description: String!
+  ) {
+    createCard(fieldName: $fieldName, calendar: $calendar, time: $time, description: $description) {
+    }
+  }
+`;
