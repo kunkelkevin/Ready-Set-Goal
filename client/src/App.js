@@ -5,9 +5,11 @@ import ApolloClient from "apollo-boost";
 
 import Home from "./pages";
 import SigninPage from "./pages/Signin";
-import SignupPage from "./pages/signup";
-import LoggedInPage from "./pages/LoggedIn";
+import SignupPage from "./pages/Signup";
+import Loggedin from "./pages/Loggedin";
 import { StoreProvider } from "./utils/GlobalState";
+import ProfilePage from "./pages/Profile";
+import CreateCardPage from "./pages/CreateCardPage";
 
 const client = new ApolloClient({
   request: (operation) => {
@@ -29,9 +31,11 @@ function App() {
           <StoreProvider>
             <Switch>
               <Route path="/" component={Home} exact />
-              <Route path="/signin" component={SigninPage} exact />
-              <Route path="/signup" component={SignupPage} exact />
-              <Route path="/loggedin" component={LoggedInPage} exact />
+              <Route path="/Signin" component={SigninPage} exact />
+              <Route path="/Signup" component={SignupPage} exact />
+              <Route path="/Loggedin" component={Loggedin} exact />
+              <Route path="/Profile" component={ProfilePage} exact />
+              <Route path="/Create" component={CreateCardPage} exact />
             </Switch>
           </StoreProvider>
         </div>

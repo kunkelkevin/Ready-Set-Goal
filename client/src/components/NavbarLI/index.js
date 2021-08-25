@@ -13,7 +13,7 @@ import {
   NavBtnLink,
 } from "./NavbarElements";
 
-const Navbar = ({ toggle }) => {
+const NavbarLI = ({ toggle }) => {
   const [scrollNav, setScrollNav] = useState(false);
 
   const changeNav = () => {
@@ -36,8 +36,8 @@ const Navbar = ({ toggle }) => {
     <>
       <Nav scrollNav={scrollNav}>
         <NavbarContainer>
-          <NavLogo to="/" onClick={toggleHome}>
-            Ready! Set! Goal!
+          <NavLogo to="/Loggedin" onClick={toggleHome}>
+            Austin League
           </NavLogo>
           <MobileIcon onClick={toggle}>
             <FaBars />
@@ -53,7 +53,7 @@ const Navbar = ({ toggle }) => {
                 offset={-80}
                 activeClass="active"
               >
-                Ready
+                North
               </NavLinks>
             </NavItem>
             <NavItem>
@@ -64,7 +64,7 @@ const Navbar = ({ toggle }) => {
               exact="true"
               offset={-80}
               activeClass="active"
-              >Set</NavLinks>
+              >East</NavLinks>
             </NavItem>
             <NavItem>
               <NavLinks to="goal"
@@ -74,7 +74,7 @@ const Navbar = ({ toggle }) => {
               exact="true"
               offset={-80}
               activeClass="active"
-              >Goal</NavLinks>
+              >South</NavLinks>
             </NavItem>
             <NavItem>
               <NavLinks to="score"
@@ -84,11 +84,11 @@ const Navbar = ({ toggle }) => {
               exact="true"
               offset={400}
               activeClass="active"
-              >Score</NavLinks>
+              >West</NavLinks>
             </NavItem>
           </NavMenu>
           <NavBtn>
-            <NavBtnLink to="/signin">Sign In</NavBtnLink>
+            <NavBtnLink to="/Profile">Profile</NavBtnLink>
           </NavBtn>
         </NavbarContainer>
       </Nav>
@@ -96,4 +96,4 @@ const Navbar = ({ toggle }) => {
   );
 };
 
-export default Navbar;
+export default NavbarLI;
