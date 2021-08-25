@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import gql from "graphql-tag";
 
 export const QUERY_ALL_FIELDS = gql`
   {
@@ -13,33 +13,29 @@ export const QUERY_ALL_FIELDS = gql`
 `;
 
 export const QUERY_GAMES_BY_FIELD_ID = gql`
-query gamesByFieldId($_id: _id) {
-  gamesByFieldId(_id: $_id){
-     time
-     description
-     players {
-       _id
-     }
-     field {
-      _id
-    }
-     playerCount
-  }
-}
-`;
-
-export const QUERY_PRODUCTS = gql`
-  query getProducts($category: ID) {
-    products(category: $category) {
-      _id
-      name
+  query gamesByFieldId($_id: _id) {
+    gamesByFieldId(_id: $_id) {
+      time
       description
-      price
-      quantity
-      image
-      category {
+      players {
         _id
       }
+      field {
+        _id
+      }
+      playerCount
+    }
+  }
+`;
+
+export const QUERY_SINGLE_FIELD = gql`
+  query field($ID: ID!) {
+    field(_id: $id) {
+      _id
+      name
+      fieldType
+      lat
+      lng
     }
   }
 `;
@@ -68,31 +64,31 @@ export const QUERY_ALL_PRODUCTS = gql`
 `;
 
 export const QUERY_CATEGORIES = gql`
-{
-  categories {
-    _id
-    name
+  {
+    categories {
+      _id
+      name
+    }
   }
-}
 `;
 
 export const QUERY_USER = gql`
-{
-  user {
-    firstName
-    lastName
-    orders {
-      _id
-      purchaseDate
-      products {
+  {
+    user {
+      firstName
+      lastName
+      orders {
         _id
-        name
-        description
-        price
-        quantity
-        image
+        purchaseDate
+        products {
+          _id
+          name
+          description
+          price
+          quantity
+          image
+        }
       }
     }
   }
-}
 `;

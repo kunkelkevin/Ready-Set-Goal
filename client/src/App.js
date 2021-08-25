@@ -7,6 +7,7 @@ import Home from "./pages";
 import SigninPage from "./pages/Signin";
 import SignupPage from "./pages/Signup";
 import LoggedInPage from "./pages/LoggedIn";
+import FieldPage from "./pages/Field";
 import { StoreProvider } from "./utils/GlobalState";
 import ProfilePage from "./pages/Profile";
 import CreateCardPage from "./pages/CreateCardPage";
@@ -34,6 +35,7 @@ function App() {
               <Route path="/Signin" component={SigninPage} exact />
               <Route path="/Signup" component={SignupPage} exact />
               <Route path="/LoggedIn" component={LoggedInPage} exact />
+              <Route path="/field/:id" component={FieldPage} exact />
               <Route path="/Profile" component={ProfilePage} exact />
               <Route path="/Create" component={CreateCardPage} exact />
             </Switch>

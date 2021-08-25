@@ -1,19 +1,14 @@
-import React from 'react';
-import {Marker} from '@react-google-maps/api';
+import React from "react";
+import { Marker } from "@react-google-maps/api";
 
 const CustomMarker = (props) => {
-    const {id} = props;
+  const { id } = props;
 
-    const onMarkerClick = (evt) => {
-        console.log(id);
-    };
+  const onMarkerClick = (evt) => {
+    window.location.assign("/field/" + id);
+  };
 
-    return (
-        <Marker
-            onClick={onMarkerClick}
-            {...props}
-        />
-    );
+  return <Marker onClick={onMarkerClick} {...props} />;
 };
 
 export default CustomMarker;
