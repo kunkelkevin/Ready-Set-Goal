@@ -6,7 +6,7 @@ import ApolloClient from "apollo-boost";
 import Home from "./pages";
 import SigninPage from "./pages/Signin";
 import SignupPage from "./pages/Signup";
-import Loggedin from "./pages/Loggedin";
+import LoggedInPage from "./pages/Loggedin";
 import { StoreProvider } from "./utils/GlobalState";
 import ProfilePage from "./pages/Profile";
 import CreateCardPage from "./pages/CreateCardPage";
@@ -33,7 +33,7 @@ function App() {
               <Route path="/" component={Home} exact />
               <Route path="/Signin" component={SigninPage} exact />
               <Route path="/Signup" component={SignupPage} exact />
-              <Route path="/Loggedin" component={Loggedin} exact />
+              <Route path="/LoggedIn" component={LoggedInPage} exact />
               <Route path="/Profile" component={ProfilePage} exact />
               <Route path="/Create" component={CreateCardPage} exact />
             </Switch>

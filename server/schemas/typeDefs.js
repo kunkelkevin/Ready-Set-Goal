@@ -55,10 +55,10 @@ const typeDefs = gql`
     addPlayerToGame(_id: ID!, player: ID): Game
     removePlayerFromGame(_id: ID!, player: ID): Game
     updatePlayer(
-      firstName: String
-      lastName: String
+      playerName: String
       email: String
       password: String
+      experience: String
     ): Player
     login(email: String!, password: String!): Auth
   }
