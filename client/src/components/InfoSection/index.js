@@ -26,7 +26,7 @@ const InfoSection = ({
   darkText,
   description,
   buttonLabel,
-  img,
+  IMG,
   alt,
   headLine,
   primary,
@@ -63,7 +63,7 @@ const InfoSection = ({
             </Column1>
             <Column2>
               <ImgWrap>
-                <Img src={img} alt={alt} />
+                <Img src={IMG} alt={alt} />
               </ImgWrap>
             </Column2>
           </InfoRow>
