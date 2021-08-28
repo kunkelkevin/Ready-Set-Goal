@@ -83,6 +83,11 @@ export const GoogleMapContainer = styled.div`
   position: relative;
   z-index: 1;
   padding-right: 100px;
+
+
+  @media screen and (max-width: 480px) {
+      width: 100%;
+  }
 `;
 
 export const PageContainer = styled.div`
@@ -98,4 +103,10 @@ height: 100px;
 margin: 0;
 padding-top: 20px;
 padding-right: 80px;
+
+
+@media screen and (max-width: 480px) {
+    display:flex;
+    width: 95%;
+}
 `
