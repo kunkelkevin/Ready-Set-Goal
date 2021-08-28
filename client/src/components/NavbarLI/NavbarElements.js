@@ -40,6 +40,7 @@ export const NavLogo = styled(LinkRouter)`
   margin-left: 24px;
   font-weight: bold;
   text-decoration: none;
+  padding-right: 20px;
 `;
 
 export const MobileIcon = styled.div`
@@ -54,6 +55,7 @@ export const MobileIcon = styled.div`
     font-size: 1.8rem;
     cursor: pointer;
     color: #fff;
+    margin-right: 50px;
   }
 `;
 

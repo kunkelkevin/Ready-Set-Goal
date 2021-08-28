@@ -86,7 +86,7 @@ export const GoogleMapContainer = styled.div`
 
 
   @media screen and (max-width: 480px) {
-      width: 100%;
+      width: 98%;
   }
 `;
 
