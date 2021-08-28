@@ -21,6 +21,9 @@ import {
   BtnWrap,
   ImgWrap,
   Img,
+  GoogleMapContainer,
+  MapP,
+  PageContainer,
 } from "./MapElements";
 
 function GameMap() {
@@ -71,8 +74,10 @@ function GameMap() {
 
   console.log(containerStyle, center);
   return (
-    <section className="my-5">
-      <h1 id="about">Game Map</h1>
+    <>
+      {/* <h1 id="about">Game Map</h1> */}
+      <PageContainer>
+      <GoogleMapContainer>
       <LoadScript googleMapsApiKey="AIzaSyCwAeZJKbQRs3xWuL0Ew2ZeSfJjJehpo7M">
         <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={12}>
           {state.fields.map((field) => (
@@ -87,10 +92,10 @@ function GameMap() {
           <></>
         </GoogleMap>
       </LoadScript>
-      <div className="my-2">
-        <p>Click on a field marker to join or create games!</p>
-      </div>
-    </section>
+      </GoogleMapContainer>
+      <MapP>Click on a field marker to join or create games!</MapP> 
+      </PageContainer>
+    </>
   );
 }
 

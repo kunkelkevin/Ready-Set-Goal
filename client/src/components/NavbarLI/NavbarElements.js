@@ -27,7 +27,7 @@ export const NavbarContainer = styled.div`
   width: 100%;
   padding: 0 24px;
   max-width: 1100px;
-  margin-right: 180px;
+  margin-right: 160px;
 `;
 
 export const NavLogo = styled(LinkRouter)`
@@ -108,6 +108,7 @@ export const NavBtnLink = styled(LinkRouter)`
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   text-decoration: none;
+  margin-left: 120px;
 
   &:hover {
     transition: all 0.2s ease-in-out;

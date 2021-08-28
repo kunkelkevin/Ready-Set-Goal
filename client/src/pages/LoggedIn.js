@@ -9,7 +9,7 @@ const LoggedInPage = () => {
     <>
       <NavbarLI />
       <Map />
-      <GalleryLI />
+      {/* <GalleryLI /> */}
       <FooterLI />
     </>
   );
