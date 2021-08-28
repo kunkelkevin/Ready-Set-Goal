@@ -5,11 +5,11 @@ import { useQuery } from "@apollo/react-hooks";
 import { idbPromise } from "../../utils/helpers";
 import { QUERY_ALL_FIELDS } from "../../utils/queries";
 import { UPDATE_FIELDS } from "../../utils/actions";
+import Games from "../Games";
 
 function Field() {
   const [state, dispatch] = useStoreContext();
   const { id } = useParams();
-  console.log("here");
   const [currentField, setCurrentField] = useState({});
 
   const { loading, data } = useQuery(QUERY_ALL_FIELDS);
@@ -47,6 +47,7 @@ function Field() {
     <section className="my-5">
       <h1 id="about">{currentField.name}</h1>
       <p>{currentField.fieldType}</p>
+      <Games></Games>
       <Link to="/LoggedIn">← Back to the game map</Link>
     </section>
   );

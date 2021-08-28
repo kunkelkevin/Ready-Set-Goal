@@ -40,6 +40,24 @@ export const QUERY_SINGLE_FIELD = gql`
   }
 `;
 
+export const QUERY_GAMES = gql`
+  {
+    games {
+      _id
+      time
+      description
+      players {
+        _id
+      }
+      field {
+        _id
+        name
+      }
+      playerCount
+    }
+  }
+`;
+
 export const QUERY_CHECKOUT = gql`
   query getCheckout($products: [ID]!) {
     checkout(products: $products) {

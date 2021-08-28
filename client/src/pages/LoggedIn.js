@@ -1,7 +1,7 @@
 import React from "react";
 import Map from "../components/Map";
 import NavbarLI from "../components/NavbarLI";
-import GalleryLI from "../components/GalleryLI";
+import Games from "../components/Games";
 import FooterLI from "../components/FooterLI";
 
 const LoggedInPage = () => {
@@ -9,7 +9,7 @@ const LoggedInPage = () => {
     <>
       <NavbarLI />
       <Map />
-      <GalleryLI />
+      <Games></Games>
       <FooterLI />
     </>
   );
