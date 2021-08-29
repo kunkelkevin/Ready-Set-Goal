@@ -39,6 +39,7 @@ const CreateCard = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    console.log(formState, id, playerId);
     await addGame({
       variables: {
         time: formState.time,
@@ -112,7 +113,7 @@ const CreateCard = () => {
                 onChange={handleChange}
                 required
               />
-              <FormButton typle="submit">Sign In</FormButton>
+              <FormButton typle="submit">Create Game</FormButton>
               <SignUp to="/Profile">Update your Profile</SignUp>
             </Form>
           </FormContent>

@@ -77,23 +77,27 @@ function GameMap() {
     <>
       {/* <h1 id="about">Game Map</h1> */}
       <PageContainer>
-      <GoogleMapContainer>
-      <LoadScript googleMapsApiKey="AIzaSyCwAeZJKbQRs3xWuL0Ew2ZeSfJjJehpo7M">
-        <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={12}>
-          {state.fields.map((field) => (
-            <CustomMarker
-              position={field.position}
-              key={field._id}
-              id={field._id}
-            />
-          ))}
+        <GoogleMapContainer>
+          <LoadScript googleMapsApiKey={process.env.REACT_APP_API_KEY}>
+            <GoogleMap
+              mapContainerStyle={containerStyle}
+              center={center}
+              zoom={12}
+            >
+              {state.fields.map((field) => (
+                <CustomMarker
+                  position={field.position}
+                  key={field._id}
+                  id={field._id}
+                />
+              ))}
 
-          {/* Child components, such as markers, info windows, etc. */}
-          <></>
-        </GoogleMap>
-      </LoadScript>
-      </GoogleMapContainer>
-      <MapP>Click on a field marker to join or create games!</MapP> 
+              {/* Child components, such as markers, info windows, etc. */}
+              <></>
+            </GoogleMap>
+          </LoadScript>
+        </GoogleMapContainer>
+        <MapP>Click on a field marker to join or create games!</MapP>
       </PageContainer>
     </>
   );
