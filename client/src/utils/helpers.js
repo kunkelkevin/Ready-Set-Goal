@@ -7,13 +7,13 @@ export function pluralize(name, count) {
 
 export function idbPromise(storeName, method, object) {
   return new Promise((resolve, reject) => {
-    const request = window.indexedDB.open('shop-shop', 1);
+    const request = window.indexedDB.open('ready-set-goal', 1);
     let db, tx, store;
     request.onupgradeneeded = function(e) {
       const db = request.result;
-      db.createObjectStore('products', { keyPath: '_id' });
-      db.createObjectStore('categories', { keyPath: '_id' });
-      db.createObjectStore('cart', { keyPath: '_id' });
+      db.createObjectStore('players', { keyPath: '_id' });
+      db.createObjectStore('fields', { keyPath: '_id' });
+      db.createObjectStore('games', { keyPath: '_id' });
     };
 
     request.onerror = function(e) {

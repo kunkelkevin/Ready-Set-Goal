@@ -1,4 +1,12 @@
 import React, { useEffect } from "react";
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import { useStoreContext } from "../../utils/GlobalState";
+import CustomMarker from '../Marker';
+import { useQuery } from '@apollo/react-hooks';
+import { idbPromise } from "../../utils/helpers";
+import { QUERY_ALL_FIELDS } from '../../utils/queries';
+import { UPDATE_FIELDS } from "../../utils/actions";
+
 import mapImage from "../../images/dummymap.jpg";
 import {
   MapContainer,
@@ -16,78 +24,80 @@ import {
 } from "./MapElements";
 
 function GameMap() {
-  // useEffect(() => {
-  // const script = document.createElement("script");
-  // const script2 = document.createElement("script");
-  // script2.innerHTML = `
-  // let map;
-  // // global array to store the marker object
-  // let markersArray = [];
+  const [state, dispatch] = useStoreContext();
 
-  // function initMap() {
-  //   map = new google.maps.Map(document.getElementById("map"), {
-  //     center: { lat: 30.282566215657706, lng: -97.79394520785672 },
-  //     zoom: 14,
-  //   });
-  //   addMarker(
-  //     { lat: 30.26785608130884, lng: -97.76767361254434 },
-  //     "icon49"
-  //   );
-  //   addMarker(
-  //     { lat: 30.27782929442951, lng: -97.81307150664183 },
-  //     "icon57"
-  //   );
-  //   addMarker({ lat: 30.272051460558384, lng: -97.80390648750793 });
-  // }
+  const { loading, data } = useQuery(QUERY_ALL_FIELDS);
 
-  // function addMarker(latLng, url, type) {
-  //   if (type) {
-  //     let url = "http://maps.google.com/mapfiles/kml/pal2/" + type + ".png";
+  useEffect(() => {
+    if(data) {
+      console.log(data);
+      dispatch({
+           type: UPDATE_FIELDS,
+          fields: data.fields
+        });
+        data.fields.forEach((field) => {
+          idbPromise('fields', 'put', field);
+        });
+    } else if (!loading) {
+      idbPromise('fields', 'get').then((fields) => {
+        dispatch({
+          type: UPDATE_FIELDS,
+         fields: fields
+       });
+      });
+    }
+  }, [data, loading, dispatch]);
 
-  //     //url += color + "-dot.png";
+  const containerStyle = {
+    width: '80%',
+    height: '60vw'
+  };
+  
+  const center = {
+    lat: 30.282566215657706,
+    lng: -97.79394520785672
+  };
 
-  //     let marker = new google.maps.Marker({
-  //       map: map,
-  //       position: latLng,
-  //       icon: {
-  //         url: url,
-  //         //scaledSize: new google.maps.Size(38, 38)
-  //       },
-  //     });
-  //   } else {
-  //     let marker = new google.maps.Marker({
-  //       map: map,
-  //       position: latLng,
-  //     });
-  //   }
-  //   //store the marker object drawn in global array
-  //   //markersArray.push(marker);
-  // }`;
-  // script.async = true;
-  // script.defer = true;
-  // script.src =
-  //   "https://maps.googleapis.com/maps/api/js?key=AIzaSyCwAeZJKbQRs3xWuL0Ew2ZeSfJjJehpo7M&callback=initMap";
-  // document.body.appendChild(script2);
-  // document.body.appendChild(script);
+  const position = {
+    lat: 30.26785608130884, 
+    lng: -97.76767361254434
+  }
 
-  // return () => {
-  // document.body.removeChild(script);
-  //     document.body.removeChild(script2);
-  //   };
-  // }, []);
-
+  const fieldPositions = () => {
+    return state.fields.map(field => {
+      field.position = {
+        lat: field.lat,
+        lng: field.lng,
+      }
+      return field;
+    });
+  }
+  console.log(fieldPositions());
+  
+  console.log(containerStyle,center);
   return (
     <section className="my-5">
       <h1 id="about">Game Map</h1>
-      <div id="map"></div>
-      {/* <img
-        src={mapImage}
-        className="my-2"
-        style={{ width: "100%" }}
-        alt="cover"
-      /> */}
+      <LoadScript googleMapsApiKey = "AIzaSyCwAeZJKbQRs3xWuL0Ew2ZeSfJjJehpo7M" >
+      <GoogleMap
+        mapContainerStyle={containerStyle}
+        center={center}
+        zoom={10}
+      >
+        {state.fields.map(field => (
+          <CustomMarker 
+          position={field.position}
+          key= {field._id}
+          id= {field._id}
+          />
+        ))}
+        
+        { /* Child components, such as markers, info windows, etc. */ }
+        <></>
+      </GoogleMap>
+    </LoadScript>
       <div className="my-2">
-        <p>Click on the map and find a game!</p>
+        <p>Click on a field marker to join or create games!</p>
       </div>
     </section>
   );

@@ -1,5 +1,33 @@
 import gql from 'graphql-tag';
 
+export const QUERY_ALL_FIELDS = gql`
+  {
+    fields {
+      _id
+      name
+      fieldType
+      lat
+      lng
+    }
+  }
+`;
+
+export const QUERY_GAMES_BY_FIELD_ID = gql`
+query gamesByFieldId($_id: _id) {
+  gamesByFieldId(_id: $_id){
+     time
+     description
+     players {
+       _id
+     }
+     field {
+      _id
+    }
+     playerCount
+  }
+}
+`;
+
 export const QUERY_PRODUCTS = gql`
   query getProducts($category: ID) {
     products(category: $category) {

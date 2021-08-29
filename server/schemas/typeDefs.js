@@ -7,7 +7,6 @@ const typeDefs = gql`
     fieldType: String
     lat: Float
     lng: Float
-    games: [Game]
   }
   type Player {
     _id: ID
@@ -16,7 +15,6 @@ const typeDefs = gql`
     password: String
     createdAt: String
     experience: String
-    games: [Game]
   }
   type Game {
     _id: ID
@@ -44,7 +42,7 @@ const typeDefs = gql`
 
   type Mutation {
     addPlayer(playerName: String!, email: String!, password: String!): Auth
-    addField(Name: String!, fieldType: String!, lat: Float!, lng: Float!): Field
+    addField(name: String!, fieldType: String!, lat: Float!, lng: Float!): Field
     addGame(
       time: String!
       description: String
