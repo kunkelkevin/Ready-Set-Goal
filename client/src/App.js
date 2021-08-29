@@ -37,7 +37,7 @@ function App() {
               <Route path="/LoggedIn" component={LoggedInPage} exact />
               <Route path="/field/:id" component={FieldPage} exact />
               <Route path="/Profile" component={ProfilePage} exact />
-              <Route path="/Create" component={CreateCardPage} exact />
+              <Route path="/CreateGame/:id" component={CreateCardPage} exact />
             </Switch>
           </StoreProvider>
         </div>

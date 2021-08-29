@@ -25,7 +25,6 @@ const SignUp = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
     const mutationResponse = await addPlayer({
       variables: {
         email: formState.email,

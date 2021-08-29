@@ -49,3 +49,25 @@ export const REMOVE_GAME = gql`
     }
   }
 `;
+
+export const ADD_GAME = gql`
+  mutation addGame(
+    $time: String!
+    $description: String
+    $field: ID!
+    $players: [ID!]!
+  ) {
+    addGame(
+      time: $time
+      description: $description
+      field: $field
+      players: $players
+    ) {
+      time
+      description
+      field {
+        _id
+      }
+    }
+  }
+`;

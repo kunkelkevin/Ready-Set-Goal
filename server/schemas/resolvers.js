@@ -73,17 +73,13 @@ const resolvers = {
     },
     addGame: async (parent, args, context) => {
       console.log(context);
-      // if (context.player) {
-      const game = await Game.create(args);
+      if (context.player) {
+        const game = await Game.create(args);
 
-      // await Player.findByIdAndUpdate("6122cc5e522db42bd4e0db58", {
-      //   $push: { games: game },
-      // });
+        return game;
+      }
 
-      return game;
-      // }
-
-      // throw new AuthenticationError("Not logged in");
+      throw new AuthenticationError("Not logged in");
     },
     removeGame: async (parent, { _id }, context) => {
       if (context.player) {

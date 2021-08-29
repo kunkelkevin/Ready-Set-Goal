@@ -47,6 +47,9 @@ function Field() {
     <section className="my-5">
       <h1 id="about">{currentField.name}</h1>
       <p>{currentField.fieldType}</p>
+      <Link to={"/CreateGame/" + id}>
+        <button id={id}>Create New Game</button>
+      </Link>
       <Games></Games>
       <Link to="/LoggedIn">← Back to the game map</Link>
     </section>
