@@ -58,6 +58,17 @@ export const QUERY_GAMES = gql`
   }
 `;
 
+export const QUERY_ME = gql`
+  {
+    me {
+      _id
+      playerName
+      email
+      experience
+    }
+  }
+`;
+
 export const QUERY_CHECKOUT = gql`
   query getCheckout($products: [ID]!) {
     checkout(products: $products) {

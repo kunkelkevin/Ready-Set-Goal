@@ -7,12 +7,13 @@ const resolvers = {
   Query: {
     me: async (parent, args, context) => {
       if (context.player) {
+        console.log(context.player);
         const playerData = await Player.findOne({
           _id: context.player._id,
         }).select("-__v -password");
         return playerData;
       }
-
+      console.log("didn't make it");
       throw new AuthenticationError("Not logged in");
     },
     games: async () => {
@@ -86,7 +87,7 @@ const resolvers = {
     },
     removeGame: async (parent, { _id }, context) => {
       if (context.player) {
-        const game = await Game.destroy(_id);
+        const game = await Game.findByIdAndDelete(_id);
         return game;
       }
     },

@@ -54,6 +54,7 @@ function GamesList() {
               time={game.time}
               description={game.description}
               field={game.field.name}
+              players={game.players}
               playerCount={game.playerCount}
             ></GameCard>
           ))}

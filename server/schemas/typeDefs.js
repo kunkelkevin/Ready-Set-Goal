@@ -50,8 +50,8 @@ const typeDefs = gql`
       players: [ID!]!
     ): Game
     removeGame(_id: ID!): Game
-    addPlayerToGame(_id: ID!, player: ID): Game
-    removePlayerFromGame(_id: ID!, player: ID): Game
+    addPlayerToGame(_id: ID!, player: ID!): Game
+    removePlayerFromGame(_id: ID!, player: ID!): Game
     updatePlayer(
       playerName: String
       email: String
