@@ -43,12 +43,7 @@ const typeDefs = gql`
   type Mutation {
     addPlayer(playerName: String!, email: String!, password: String!): Auth
     addField(name: String!, fieldType: String!, lat: Float!, lng: Float!): Field
-    addGame(
-      time: String!
-      description: String
-      field: ID!
-      players: [ID!]!
-    ): Game
+    addGame(time: String!, description: String, field: ID!, players: [ID]): Game
     removeGame(_id: ID!): Game
     addPlayerToGame(_id: ID!, player: ID!): Game
     removePlayerFromGame(_id: ID!, player: ID!): Game

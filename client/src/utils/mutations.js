@@ -55,7 +55,7 @@ export const ADD_GAME = gql`
     $time: String!
     $description: String
     $field: ID!
-    $players: [ID!]!
+    $players: [ID]
   ) {
     addGame(
       time: $time
