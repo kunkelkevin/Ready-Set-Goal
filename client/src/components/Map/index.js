@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import { GoogleMap, LoadScript } from "@react-google-maps/api";
 import { useStoreContext } from "../../utils/GlobalState";
 import CustomMarker from "../Marker";
 import { useQuery } from "@apollo/react-hooks";
@@ -7,20 +7,7 @@ import { idbPromise } from "../../utils/helpers";
 import { QUERY_ALL_FIELDS } from "../../utils/queries";
 import { UPDATE_FIELDS } from "../../utils/actions";
 
-import mapImage from "../../images/dummymap.jpg";
 import {
-  MapContainer,
-  MapWrapper,
-  MapRow,
-  Column1,
-  Column2,
-  TextWrapper,
-  TopLine,
-  Heading,
-  Subtitle,
-  BtnWrap,
-  ImgWrap,
-  Img,
   GoogleMapContainer,
   MapP,
   PageContainer,
@@ -70,9 +57,8 @@ function GameMap() {
       return field;
     });
   };
-  console.log(fieldPositions());
+  fieldPositions();
 
-  console.log(containerStyle, center);
   return (
     <>
       {/* <h1 id="about">Game Map</h1> */}

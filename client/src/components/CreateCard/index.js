@@ -17,7 +17,6 @@ import {
   SignUp,
   Icon,
   FormWrap,
-  FormGrid,
 } from "./CreateCardElements";
 
 const CreateCard = () => {
@@ -39,7 +38,6 @@ const CreateCard = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState, id, playerId);
     await addGame({
       variables: {
         time: formState.time,
@@ -86,7 +84,6 @@ const CreateCard = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    console.log(name, value);
     setFormState({
       ...formState,
       [name]: value,

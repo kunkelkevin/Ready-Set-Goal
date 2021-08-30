@@ -40,8 +40,6 @@ function GamesList() {
     }
     return state.games.filter((game) => game.field._id === id);
   };
-  console.log(state.games);
-  console.log(filteredGames());
 
   return (
     <GameContainer>

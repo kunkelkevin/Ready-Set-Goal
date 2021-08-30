@@ -10,7 +10,6 @@ import {
   SignUp,
   Icon,
   FormWrap,
-  FormGrid,
 } from "./SigninElements";
 import { useMutation } from "@apollo/react-hooks";
 import Auth from "../../utils/auth";
@@ -25,7 +24,6 @@ const SignIn = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
     const mutationResponse = await login({
       variables: {
         email: formState.email,
@@ -38,7 +36,6 @@ const SignIn = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    console.log(name, value);
     setFormState({
       ...formState,
       [name]: value,

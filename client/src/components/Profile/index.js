@@ -1,5 +1,5 @@
 import React from 'react'
-import { FormButton, FormH1, FormInput, FormLabel, Container, Form, FormContent, SignUp, Icon, FormWrap, FormGrid } from './ProfileElements'
+import { FormButton, FormH1, FormInput, FormLabel, Container, Form, FormContent, SignUp, Icon, FormWrap} from './ProfileElements'
 
 const Profile = () => {
     return (

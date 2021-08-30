@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useStoreContext } from "../../utils/GlobalState";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import { idbPromise } from "../../utils/helpers";
 import { QUERY_ALL_FIELDS } from "../../utils/queries";
 import { UPDATE_FIELDS } from "../../utils/actions";
 import Games from "../Games";
-import { FieldH1, FieldP, FieldButton, FieldContainer, FieldWrapper } from "./FieldElements";
+import { FieldH1, FieldP, FieldButton, FieldContainer } from "./FieldElements";
 
 function Field() {
   const [state, dispatch] = useStoreContext();

@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useStoreContext } from "../../utils/GlobalState";
-import { Link, useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { QUERY_ME } from "../../utils/queries";
 import {
@@ -12,7 +10,7 @@ import { GameP, GameButton, } from "./GameCardElements";
 
 function GameCard(item) {
   const { _id, field, time, players, description, playerCount } = item;
-  const { loading, data } = useQuery(QUERY_ME);
+  const { data } = useQuery(QUERY_ME);
 
   const [joinedGame, setJoinedGame] = useState(false);
   const [currentCount, setCurrentCount] = useState(playerCount);
@@ -57,7 +55,7 @@ function GameCard(item) {
       const playerIds = players.map((player) => player._id);
       setJoinedGame(playerIds.includes(data.me._id));
     }
-  }, [data, setJoinedGame, setCurrentCount]);
+  }, [data, players, setJoinedGame, setCurrentCount]);
 
   return (
     <section className="card">
