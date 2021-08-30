@@ -6,6 +6,7 @@ import { idbPromise } from "../../utils/helpers";
 import { QUERY_ALL_FIELDS } from "../../utils/queries";
 import { UPDATE_FIELDS } from "../../utils/actions";
 import Games from "../Games";
+import { FieldH1, FieldP, FieldButton, FieldContainer, FieldWrapper } from "./FieldElements";
 
 function Field() {
   const [state, dispatch] = useStoreContext();
@@ -44,15 +45,13 @@ function Field() {
   }, [fields, data, loading, dispatch, id]);
 
   return (
-    <section className="my-5">
-      <h1 id="about">{currentField.name}</h1>
-      <p>{currentField.fieldType}</p>
-      <Link to={"/CreateGame/" + id}>
-        <button id={id}>Create New Game</button>
-      </Link>
+    <FieldContainer>
+      <FieldH1 id="about">{currentField.name}</FieldH1>
+      <FieldP>Field Type  <br></br>{currentField.fieldType}</FieldP>
+        <FieldButton id={id} to={"/CreateGame/" + id}>Create New Game</FieldButton>
       <Games></Games>
-      <Link to="/LoggedIn">← Back to the game map</Link>
-    </section>
+      <FieldButton to="/LoggedIn">← Back to the game map</FieldButton>
+    </FieldContainer>
   );
 }
 

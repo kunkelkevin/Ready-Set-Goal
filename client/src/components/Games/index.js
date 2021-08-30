@@ -7,6 +7,7 @@ import { QUERY_GAMES } from "../../utils/queries";
 import { idbPromise } from "../../utils/helpers";
 import GameCard from "../GameCard";
 import spinner from "../../assets/spinner.gif";
+import { GameContainer, Gamesh3, GameWrapper, GameCardContainer,   } from "./GameElements";
 
 function GamesList() {
   const [state, dispatch] = useStoreContext();
@@ -43,11 +44,14 @@ function GamesList() {
   console.log(filteredGames());
 
   return (
+    <GameContainer>
     <div className="my-2">
-      <h3>Games</h3>
+      <Gamesh3>Games</Gamesh3>
       {filteredGames().length ? (
         <ul>
+          <GameWrapper>
           {filteredGames().map((game) => (
+            <GameCardContainer>
             <GameCard
               key={game._id}
               _id={game._id}
@@ -57,13 +61,16 @@ function GamesList() {
               players={game.players}
               playerCount={game.playerCount}
             ></GameCard>
+            </GameCardContainer>
           ))}
+          </GameWrapper>
         </ul>
       ) : (
         <h3>You don't have any games yet!</h3>
       )}
       {loading ? <img src={spinner} alt="loading" /> : null}
     </div>
+    </GameContainer>
   );
 }
 

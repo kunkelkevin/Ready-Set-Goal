@@ -8,6 +8,7 @@ import {
   REMOVE_PLAYER_FROM_GAME,
   REMOVE_GAME,
 } from "../../utils/mutations";
+import { GameP, GameButton, } from "./GameCardElements";
 
 function GameCard(item) {
   const { _id, field, time, players, description, playerCount } = item;
@@ -60,16 +61,16 @@ function GameCard(item) {
 
   return (
     <section className="card">
-      <p>Field: {field}</p>
-      <p>Time: {time}</p>
-      <p>Description: {description}</p>
-      <p>Player Count ({currentCount})</p>
-      <button id={_id} onClick={joinOrDrop}>
+      <GameP>Field: {field}</GameP>
+      <GameP>Time: {time}</GameP>
+      <GameP>Description: {description}</GameP>
+      <GameP>Player Count ({currentCount})</GameP>
+      <GameButton id={_id} onClick={joinOrDrop}>
         {joinedGame ? "Dropout" : "Join"}
-      </button>
-      <button id={_id} onClick={deleteGame}>
+      </GameButton>
+      <GameButton id={_id} onClick={deleteGame}>
         Delete Game
-      </button>
+      </GameButton>
     </section>
   );
 }
