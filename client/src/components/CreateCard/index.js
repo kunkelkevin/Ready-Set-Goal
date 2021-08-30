@@ -58,7 +58,6 @@ const CreateCard = () => {
     }
     // retrieved from server
     else if (data) {
-      setPlayerId(data.me._id);
       dispatch({
         type: UPDATE_FIELDS,
         fields: data.fields,
@@ -78,6 +77,12 @@ const CreateCard = () => {
       });
     }
   }, [fields, data, loading, dispatch, id]);
+
+  useEffect(() => {
+    if (data) {
+      setPlayerId(data.me._id);
+    }
+  }, [data]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
