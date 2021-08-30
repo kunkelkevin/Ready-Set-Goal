@@ -17,30 +17,27 @@ import {
 const GalleryLI = () => {
   return (
     <GalleryContainer id="score">
-      <GalleryH1>Testimonials</GalleryH1>
+      <GalleryH1>Current Games</GalleryH1>
       <GalleryWrapper>
         <GalleryCard>
-          <GalleryImg src={Gallery1} />
+          <GalleryH2>Time 5:30/Date: 08/10/21</GalleryH2>
           <GalleryH2>Daniel K.</GalleryH2>
           <GalleryP>
-            It was so hard to get all of my friends together to get a full game
-            going. Now I can play whenever and my friends can join along.
+            I want to play games with people who have little experience
           </GalleryP>
         </GalleryCard>
         <GalleryCard>
-          <GalleryImg src={Gallery2} />
+          <GalleryH2>Time 4:30/Date: 08/11/21</GalleryH2>
           <GalleryH2>Sarah H.</GalleryH2>
           <GalleryP>
-            I love this app! It is so easy to find fun coed pick up games and
-            meet new people. I try and get at leasat 1 game in a week.
+            I want to play games with people who have some experience
           </GalleryP>
         </GalleryCard>
         <GalleryCard>
-          <GalleryImg src={Gallery3} />
+          <GalleryH2>Time 4:30/Date: 08/11/21</GalleryH2>
           <GalleryH2>James F.</GalleryH2>
           <GalleryP>
-            I play for a local club but it is always hard to get extra practice
-            in. Using this app I am able to get in extra games.
+            I want to play games with people who can play competively
           </GalleryP>
         </GalleryCard>
       </GalleryWrapper>
