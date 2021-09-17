@@ -26,6 +26,13 @@ export const ADD_PLAYER = gql`
   }
 `;
 
+export const UPDATE_PLAYER = gql`
+  mutation updatePlayer($playerName:String!, $experience:String!)
+  {updatePlayer(playerName:$playerName, experience:$experience){
+    playerName
+    experience
+  }}`;
+
 export const ADD_PLAYER_TO_GAME = gql`
   mutation addPlayerToGame($_id: ID!, $player: ID!) {
     addPlayerToGame(_id: $_id, player: $player) {
