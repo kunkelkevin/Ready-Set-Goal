@@ -63,6 +63,8 @@ export const QUERY_GAMES = gql`
       description
       players {
         _id
+        playerName
+        experience
       }
       field {
         _id

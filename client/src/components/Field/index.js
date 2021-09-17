@@ -16,7 +16,6 @@ function Field() {
   const { loading, data } = useQuery(QUERY_ALL_FIELDS);
 
   const { fields } = state;
-
   useEffect(() => {
     // already in global store
     if (fields.length) {

@@ -57,12 +57,18 @@ function GameCard(item) {
     }
   }, [data, players, setJoinedGame, setCurrentCount]);
 
+  const gameClick = (event) => {
+    window.location.assign("/Game/" + _id);
+  }
+
   return (
-    <section className="card">
+    <section className="card" >
+      <div onClick={gameClick}>
       <GameP>Field: {field}</GameP>
       <GameP>Time: {time}</GameP>
       <GameP>Description: {description}</GameP>
       <GameP>Player Count ({currentCount})</GameP>
+      </div>
       <GameButton id={_id} onClick={joinOrDrop}>
         {joinedGame ? "Dropout" : "Join"}
       </GameButton>

@@ -8,6 +8,7 @@ import SigninPage from "./pages/Signin";
 import SignupPage from "./pages/Signup";
 import LoggedInPage from "./pages/LoggedIn";
 import FieldPage from "./pages/Field";
+import GamePage from "./pages/Game";
 import { StoreProvider } from "./utils/GlobalState";
 import ProfilePage from "./pages/Profile";
 import CreateCardPage from "./pages/CreateCardPage";
@@ -36,6 +37,7 @@ function App() {
               <Route path="/Signup" component={SignupPage} exact />
               <Route path="/LoggedIn" component={LoggedInPage} exact />
               <Route path="/field/:id" component={FieldPage} exact />
+              <Route path="/Game/:id" component={GamePage} exact />
               <Route path="/Profile" component={ProfilePage} exact />
               <Route path="/CreateGame/:id" component={CreateCardPage} exact />
             </Switch>

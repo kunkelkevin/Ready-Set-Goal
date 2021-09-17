@@ -49,9 +49,8 @@ function GamesList() {
         <ul>
           <GameWrapper>
           {filteredGames().map((game) => (
-            <GameCardContainer>
+            <GameCardContainer key={game._id}>
             <GameCard
-              key={game._id}
               _id={game._id}
               time={game.time}
               description={game.description}
